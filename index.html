@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dede Pide Göztepe | Pide, Kebap, Lahmacun, Izgara – Konak/İzmir</title>
+
+<!-- SEO -->
+<meta name="description" content="Dede Pide Göztepe: Pide, lahmacun, kebap, ızgara ve çorbalar. Sıcak teslimat, tek tıkla ara, WhatsApp sipariş ve Yemeksepeti bağlantıları. Göztepe, Mithatpaşa Cd. No:849/A Konak/İzmir." />
+<meta name="theme-color" content="#0f0f0f" />
+<link rel="canonical" href="https://example.com/" />
+
+<!-- Icons & Fonts -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
+<style>
+  :root{
+    --bg:#0f0f0f;
+    --surface:#121212;
+    --surface-2:#1a1a1a;
+    --text:#f5f5f5;
+    --muted:#cfcfcf;
+    --gold:#d4af37;
+    --gold-2:#b8860b;
+    --line:rgba(212,175,55,.3);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;scroll-behavior:smooth;}
+  a{color:inherit;text-decoration:none}
+
+  /* Header (sticky, shrink on scroll) */
+  header{
+    position:sticky;top:0;z-index:1000;
+    background:linear-gradient(135deg,#171717,#202020);
+    color:var(--gold);
+    padding:26px 16px;
+    text-align:center;
+    font-weight:700;letter-spacing:.3px;
+    box-shadow:0 6px 18px rgba(0,0,0,.45);
+    transition:padding .3s ease,font-size .3s ease,background .3s ease,opacity .3s ease,backdrop-filter .3s ease;
+    backdrop-filter:saturate(140%) blur(0px);
+  }
+  header.shrink{
+    padding:12px 16px;font-size:.95rem;
+    background:linear-gradient(135deg,#151515,#0f0f0f);
+    opacity:.98; backdrop-filter:saturate(180%) blur(6px);
+  }
+  header .title{font-size:1.75rem}
+  header .subtitle{color:var(--muted);font-size:.95rem;margin-top:4px}
+
+  /* Top order buttons */
+  .order-hub{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:18px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 16px;border-radius:12px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    color:#111;font-weight:700;text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,.5);
+    transition:transform .18s ease,filter .18s ease, box-shadow .2s ease;
+    border:1px solid rgba(255,255,255,.08)
+  }
+  .btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(212,175,55,.5);
+  }
+  .btn.secondary{
+    background:linear-gradient(135deg,#1e1e1e,#262626);
+    color:var(--text);border:1px solid var(--line)
+  }
+
+  main{padding:18px;max-width:1100px;margin:0 auto}
+
+  /* Category cards */
+  .cat{background:var(--surface);border-radius:14px;overflow:hidden;margin:16px 0;
+       border:1px solid rgba(255,255,255,.04);box-shadow:0 10px 28px rgba(0,0,0,.5);transition:transform .2s ease}
+  .cat:hover{transform:translateY(-2px);}
+  .cat h2{
+    margin:0;display:flex;align-items:center;gap:10px;
+    padding:16px 16px;cursor:pointer;
+    background:var(--surface-2);
+    border-left:6px solid var(--gold);
+    transition:background .25s ease,transform .15s ease
+  }
+  .cat h2 .chev{margin-left:auto;transition:transform .25s ease}
+  .cat h2:hover{background:#232323;transform:translateX(2px)}
+  .cat.open h2 .chev{transform:rotate(90deg)}
+  .cat .content{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s ease,opacity .45s ease,padding .45s ease}
+  .cat.open .content{max-height:2400px;opacity:1;padding:8px 0}
+
+  /* Items */
+  .item{display:flex;align-items:center;justify-content:space-between;
+        padding:12px 16px;border-bottom:1px dashed var(--line);font-size:1rem;transition:transform .2s ease, background .2s ease}
+  .item:last-child{border-bottom:none}
+  .item .name{display:flex;align-items:center;gap:8px}
+  .item .desc{font-size:.85rem;color:var(--muted);margin-left:20px}
+  .item .price{font-variant-numeric:tabular-nums;transition:all .3s ease;}
+  .item:hover{transform:translateX(4px);background:rgba(212,175,55,.05);}
+  .item:hover .price{color:red;text-shadow:0 0 6px var(--gold);}
+
+  /* Section titles */
+  .section-title{
+    margin:26px 0 10px;font-weight:800;letter-spacing:.3px;color:var(--gold)
+  }
+  .divider{
+    height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
+    margin:8px 0 14px
+  }
+
+  /* Info grid (hours + about) */
+  .grid{display:grid;gap:14px}
+  @media(min-width:720px){.grid{grid-template-columns:1.1fr .9fr}}
+
+  .card{background:var(--surface);border:1px solid rgba(255,255,255,.05);
+        border-radius:14px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform .2s ease}
+  .card:hover{transform:translateY(-2px)}
+
+  /* Footer */
+  footer{margin-top:24px;background:var(--surface-2);border-top:1px solid var(--line);padding:16px}
+  .note{color:var(--muted);font-size:.95rem;text-align:center}
+
+  /* Sticky Bottom Bar (mobile-first) */
+  .dock{
+    position:fixed;left:0;right:0;bottom:10px;z-index:1100;
+    display:flex;gap:10px;justify-content:center;
+    pointer-events:none;
+  }
+  .dock .dock-inner{
+    display:flex;background:linear-gradient(135deg,#161616,#202020);
+    border:1px solid rgba(255,255,255,.06);
+    box-shadow:0 18px 40px rgba(0,0,0,.6), inset 0 0 0 1px rgba(0,0,0,.4);
+    border-radius:16px;overflow:hidden;pointer-events:auto
+  }
+  .dock .dock-btn{
+    display:flex;align-items:center;gap:8px;padding:12px 14px;
+    color:var(--text);text-decoration:none;font-weight:700;
+    border-right:1px solid rgba(255,255,255,.06);
+    transition:background .2s ease,transform .15s ease
+  }
+  .dock .dock-btn:last-child{border-right:none}
+  .dock .dock-btn:hover{background:#2a2a2a;transform:translateY(-1px)}
+  @media(min-width:880px){.dock{bottom:18px}}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  /* Small print */
+  small, .muted{color:var(--muted)}
+
+  /* Back to top button */
+  #topBtn {
+    position:fixed;bottom:80px;right:20px;padding:12px 14px;
+    font-size:1.2rem;background:var(--gold);color:#111;border:none;border-radius:50%;
+    cursor:pointer;display:none;box-shadow:0 6px 18px rgba(0,0,0,.4);transition:transform .2s ease;
+    z-index:1200;
+  }
+  #topBtn:hover{transform:scale(1.1)}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="title">🍽️ Dede Pide Göztepe</div>
+  <div class="subtitle">Sıcak – Taze – Hızlı Teslimat • Göztepe / İzmir</div>
+</header>
+
+<main>
+
+<style>
+.price {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #b8860b; /* koyu sarı */
+  animation: priceGlow 2s infinite alternate;
+}
+
+@keyframes priceGlow {
+  0%   { text-shadow: 0 0 0.5px #ffd700, 0 0 1px #ffec8b; }
+  50%  { text-shadow: 0 0 1px #ffd700, 0 0 2px #ffec8b; }
+  100% { text-shadow: 0 0 0.5px #ffd700, 0 0 1px #ffec8b; }
+}
+</style>
+
+  <!-- Quick actions -->
+  <div class="order-hub reveal" id="orderHub">
+    <a class="btn" href="tel:+902322857261"><i class="fa-solid fa-phone"></i> Tek Tıkla Ara</a>
+    <a class="btn" href="https://wa.me/905011548677" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp Sipariş</a>
+    <a class="btn secondary" href="https://www.yemeksepeti.com/restaurant/ndbp/dede-pide?utm_source=google&utm_medium=cpc&utm_campaign=19731861493&sem_tracker=19731861493&affiliateid=ganbr700010&cid=ganbr700010&gad_source=1&gad_campaignid=19723092846&gbraid=0AAAAADssUlnfCS36yueOo9npZGIsxdWuT&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ5-87721jHgZQ5P-McGU1rF2vT9t0G1Ai3i84bulLvHDERHSbT0pDYaAl0qEALw_wcB" target="_blank" rel="noopener"><i class="fa-solid fa-bowl-food"></i> Yemeksepeti</a>
+  </div>
+
+
+  <!-- MENU -->
+  <h3 class="section-title">Menü</h3>
+  <div class="divider"></div>
+<!-- Çorbalar -->
+<section class="cat reveal open">
+  <h2><i class="fa-solid fa-bowl-food"></i> Çorbalar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Mercimek</span><span class="price">150,00₺</span></div>
+    <div class="item"><span class="name">Ezogelin</span><span class="price">150,00₺</span></div>
+    <div class="item"><span class="name">İşkembe</span><span class="price">180,00₺</span></div>
+    <div class="item"><span class="name">Kelle Paça (Dil - Yanak)</span><span class="price">220,00₺</span></div>
+    <div class="item"><span class="name">Ayak Paça</span><span class="price">220,00₺</span></div>
+    <div class="item"><span class="name">Beyin</span><span class="price">220,00₺</span></div>
+    <div class="item"><span class="name">Damar Tuzlama</span><span class="price">220,00₺</span></div>
+    <div class="item"><span class="name">Karışık (Kelle Paça, Tuzlama, Beyin)</span><span class="price">250,00₺</span></div>
+    <div class="item"><span class="name">Kaşarlı Boş Pide</span><span class="price">80,00₺</span></div>
+    <div class="item"><span class="desc muted">NOT: Az çorba fiyatlarımız 50 TL düşüktür</span></div>
+  </div>
+</section>
+
+<!-- Pide Çeşitleri -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-pizza-slice"></i> Pide Çeşitleri <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Kıymalı Sade</span><span class="price">180,00₺</span></div>
+    <div class="item"><span class="name">Kıymalı Yumurtalı</span><span class="price">190,00₺</span></div>
+    <div class="item"><span class="name">Kıymalı Kaşarlı</span><span class="price">210,00₺</span></div>
+    <div class="item"><span class="name">Kaşarlı Sade</span><span class="price">180,00₺</span></div>
+    <div class="item"><span class="name">Kaşarlı Yumurtalı</span><span class="price">190,00₺</span></div>
+    <div class="item"><span class="name">Vejetaryen (Kaşar, Domates, Yeşil Biber, Mantar)</span><span class="price">250,00₺</span></div>
+    <div class="item"><span class="name">Kuşbaşılı Sade</span><span class="price">270,00₺</span></div>
+    <div class="item"><span class="name">Kuşbaşılı Kaşarlı</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Kuşbaşılı Kaşarlı Mantarlı</span><span class="price">320,00₺</span></div>
+    <div class="item"><span class="name">Karışık (Sucuk, Salam, Sosis, Kaşar, Kıyma, Mantar)</span><span class="price">350,00₺</span></div>
+  </div>
+</section>
+
+<!-- Lahmacunlar -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-bread-slice"></i> Lahmacunlar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Lahmacun</span><span class="price">150,00₺</span></div>
+    <div class="item"><span class="name">Lahmacun (Kıyma, Kaşar)</span><span class="price">170,00₺</span></div>
+    <div class="item"><span class="name">Lahmacun (Kıyma, Kaşar, Mantar)</span><span class="price">180,00₺</span></div>
+  </div>
+</section>
+
+<!-- Kestirmeli - Terbiyeli -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-utensils"></i> Kestirmeli - Terbiyeli <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Kelle Paça</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Beyin</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Tuzlama</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Karışık</span><span class="price">350,00₺</span></div>
+    <div class="item"><span class="name">Tandır</span><span class="price">450,00₺</span></div>
+  </div>
+</section>
+
+<!-- Kebaplar -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-fire-burner"></i> Kebaplar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Adana Kebap</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Urfa Kebap</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Özel Sarma Beyti Kebap</span><span class="price">400,00₺</span></div>
+    <div class="item"><span class="name">Izgara Köfte</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Tavuk Izgara</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Tavuk Kanat Izgara</span><span class="price">330,00₺</span></div>
+    <div class="item"><span class="name">Karışık Izgara</span><span class="price">600,00₺</span></div>
+    <div class="item"><span class="desc">(Yarımşar Porsiyon Adana Kebap, Urfa Kebap, Tavuk Şiş, Izgara Köfte, Fındık Lahmacun)</span></div>
+  </div>
+</section>
+
+<!-- Spesiyaller -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-star"></i> Spesiyaller <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Kuzu Kelle Bütün</span><span class="price">600,00₺</span></div>
+    <div class="item"><span class="name">Kuzu Kelle Yarım</span><span class="price">350,00₺</span></div>
+    <div class="item"><span class="name">Tandır (100 gr) (Sade)</span><span class="price">350,00₺</span></div>
+    <div class="item"><span class="name">Tandır (100 gr) (Pilavlı)</span><span class="price">450,00₺</span></div>
+    <div class="item"><span class="name">Az Tandır (60 gr)</span><span class="price">280,00₺</span></div>
+    <div class="item"><span class="name">Pilav</span><span class="price">150,00₺</span></div>
+  </div>
+</section>
+
+<!-- Kiremit Çeşitleri -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-hotjar"></i> Kiremit Çeşitleri <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Kiremitte Tavuk</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Tavuk Kaşarlı</span><span class="price">330,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Tavuk Kaşarlı Mantar</span><span class="price">350,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Kaşarlı Mantar</span><span class="price">250,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Köfte</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Kaşarlı Köfte</span><span class="price">330,00₺</span></div>
+    <div class="item"><span class="name">Kiremitte Köfte Kaşarlı Mantar</span><span class="price">350,00₺</span></div>
+  </div>
+</section>
+
+<!-- Soğuklar -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-snowflake"></i> Soğuklar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Beyin Söğüş</span><span class="price">200,00₺</span></div>
+    <div class="item"><span class="name">Mevsim Salatası</span><span class="price">200,00₺</span></div>
+    <div class="item"><span class="name">Yoğurt</span><span class="price">200,00₺</span></div>
+  </div>
+</section>
+
+<!-- Pizzalar -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-pizza-slice"></i> Pizzalar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Pizza Basic (Domates Kaşar)</span><span class="price">250,00₺</span></div>
+    <div class="item"><span class="name">Pizza Vejetaryen (Domates, Kaşar, Yeşil Biber, Mantar)</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Pizza Karışık (Domates, Sucuk, Salam, Sosis, Kaşar, Mantar, Yeşil Biber)</span><span class="price">350,00₺</span></div>
+  </div>
+</section>
+
+<!-- Tatlılar -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-ice-cream"></i> Tatlılar <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Tahinli Pide</span><span class="price">300,00₺</span></div>
+    <div class="item"><span class="name">Künefe (Sade)</span><span class="price">200,00₺</span></div>
+  </div>
+</section>
+
+<!-- İçecekler -->
+<section class="cat reveal">
+  <h2><i class="fa-solid fa-glass-water"></i> İçecekler <i class="fa-solid fa-chevron-right chev"></i></h2>
+  <div class="content">
+    <div class="item"><span class="name">Coca Cola</span><span class="price">60,00₺</span></div>
+    <div class="item"><span class="name">Coca Cola Zero</span><span class="price">60,00₺</span></div>
+    <div class="item"><span class="name">Fanta</span><span class="price">60,00₺</span></div>
+    <div class="item"><span class="name">Sprite</span><span class="price">60,00₺</span></div>
+    <div class="item"><span class="name">Ice Tea</span><span class="price">60,00₺</span></div>
+    <div class="item"><span class="name">Niğde Gazozu</span><span class="price">50,00₺</span></div>
+    <div class="item"><span class="name">Şalgam Suyu</span><span class="price">50,00₺</span></div>
+    <div class="item"><span class="name">Ayran Tombul</span><span class="price">50,00₺</span></div>
+    <div class="item"><span class="name">Soda</span><span class="price">40,00₺</span></div>
+    <div class="item"><span class="name">Su</span><span class="price">20,00₺</span></div>
+    <div class="item"><span class="name">Coca Cola 1 Lt.</span><span class="price">120,00₺</span></div>
+  </div>
+</section>
+
+  <!-- Bilgi kartları -->
+  <h3 class="section-title">Bilgiler</h3>
+  <div class="divider"></div>
+
+  <div class="grid reveal">
+    <div class="card">
+      <h4 style="margin:0 0 8px;color:var(--gold)">Çalışma Saatleri</h4>
+      <div class="item" style="border:none;padding:8px 0">
+        <div><strong>Pazartesi – Pazar</strong></div>
+        <div class="muted">12:00 – 23:00</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4 style="margin:0 0 8px;color:var(--gold)">İletişim</h4>
+      <p style="margin:6px 0"><i class="fa-solid fa-phone"></i> <a href="tel:+902322857261">(0232) 285 72 61</a></p>
+      <p style="margin:6px 0"><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/905011548677" target="_blank" rel="noopener">WhatsApp Sipariş Hattı</a></p>
+      <p style="margin:6px 0"><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/dedepidegoztepe?igsh=MTlyZWtiMmp0bTdoaQ==" target="_blank" rel="noopener">Instagram</a></p>
+      <p style="margin:6px 0"><i class="fa-solid fa-location-dot"></i> Göztepe, Mithatpaşa Cd. No:849/A, 35290 Konak/İzmir</p>
+      <p class="muted" style="margin:10px 0 0"><i class="fa-solid fa-circle-info"></i> 200₺ altı siparişlerde adrese gönderim yapılmıyor.</p>
+    </div>
+  </div>
+
+  <!-- Harita -->
+  <div class="card reveal" style="margin-top:14px;padding:10px;overflow:hidden">
+    <iframe
+      title="Dede Pide Göztepe Konum"
+      style="width:100%;height:320px;border:0;border-radius:10px"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=G%C3%B6ztepe,+Mithatpa%C5%9Fa+Cd.+No:849/A,+35290+Konak/İzmir&output=embed">
+    </iframe>
+  </div>
+
+  <!-- Alt metin -->
+  <footer class="reveal">
+    <p class="note">
+      En iyi malzemelerle hazırlanmış, sıcak ve taze ürünler sunar; müşterilerimize hızlı ve güler yüzlü hizmet veririz.
+    </p>
+  </footer>
+</main>
+
+<!-- Sticky Bottom Action Dock -->
+<nav class="dock" aria-label="Hızlı İşlemler">
+  <div class="dock-inner">
+    <a class="dock-btn" href="tel:+902322857261"><i class="fa-solid fa-phone"></i> Ara</a>
+    <a class="dock-btn" href="https://wa.me/905011548677" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+    <a class="dock-btn" href="#orderHub"><i class="fa-solid fa-bag-shopping"></i> Sipariş</a>
+  </div>
+</nav>
+
+<script>
+  // Aç/Kapa Kategoriler
+  document.querySelectorAll('.cat h2').forEach(h=>{
+    h.addEventListener('click',()=> h.parentElement.classList.toggle('open'));
+  });
+
+  // Header küçültme
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll',()=>{
+    if (window.scrollY>50) header.classList.add('shrink');
+    else header.classList.remove('shrink');
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+</script>
+
+<!-- Structured Data (LocalBusiness/Restaurant) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "name":"Dede Pide Göztepe",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Göztepe, Mithatpaşa Cd. No:849/A",
+    "addressLocality":"Konak",
+    "addressRegion":"İzmir",
+    "addressCountry":"TR",
+    "postalCode":"35290"
+  },
+  "telephone":"+90-232-285-7261",
+  "servesCuisine":["Türk","Pide","Kebap","Lahmacun"],
+  "priceRange":"₺₺",
+  "sameAs":[
+    "https://wa.me/905011548677",
+    "https://www.yemeksepeti.com/restaurant/ndbp/dede-pide?utm_source=google&utm_medium=cpc&utm_campaign=19731861493&sem_tracker=19731861493&affiliateid=ganbr700010&cid=ganbr700010&gad_source=1&gad_campaignid=19723092846&gbraid=0AAAAADssUlnfCS36yueOo9npZGIsxdWuT&gclid=Cj0KCQjw2IDFBhDCARIsABDKOJ5-87721jHgZQ5P-McGU1rF2vT9t0G1Ai3i84bulLvHDERHSbT0pDYaAl0qEALw_wcB",
+    "https://www.instagram.com/dedepidegoztepe?igsh=MTlyZWtiMmp0bTdoaQ=="
+  ],
+  "openingHours":["Mo-Su 12:00-23:00"]
+}
+</script>
+</body>
+</html>
+</script>
+</body>
+    </html>
+    <footer style="text-align:center; font-size:0.8em; color:#777; padding:10px 0;">
+  © 2025 Ferit Tahir Asil tarafından hazırlanmıştır
+</footer>
